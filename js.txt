@@ -1,0 +1,46 @@
+	var contador = 0;
+	var animales = [];
+
+	var Persister = {
+		save: function (key, value) {
+			localStorage.setItem(key, value);
+		},
+		load: function(key, default_value) {
+			return localStorage.getItem(key) || default_value;
+		},
+		saveObj: function(key, value) {
+			var json_string = JSON.stringify(value);
+			this.save(key, json_string);
+		},
+		loadObj: function(key, default_value) {
+			var json_string = this.load(key, default_value);
+			return JSON.parse(json_string);
+		}
+	};
+
+	function load_data() {
+		contador = Persister.load('clicks', 1);
+		animales = Persister.loadObj('animales', "[]");
+		$('#animales').html('');
+		for (var i = 0; i < animales.length; i++) {
+			$('#animales').append('<li>' + animales[i].id + animales[i].nombre +'</li>');
+			$('#animales').append('<li>' + '</li>');
+		}
+	}
+
+	$(document).ready(function() {
+		load_data();
+		$('#save').click(function(event) {
+			var idp = $('#nuevoid').val();
+			var nombrep = $ ('#nuevon').val();
+			var fechap = $ ('#nuevof').val();
+			animales.push({id: idp , nombre: nombrep , fecha: fechap });
+			Persister.saveObj('animales', animales);
+			$('#animales').append('<li>' + idp + nombrep + '</li>');
+
+		});
+		$('#clear').click(function(event) {
+			localStorage.clear();
+			load_data();
+		});
+	});
