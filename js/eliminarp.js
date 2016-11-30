@@ -12,12 +12,11 @@
 			return JSON.parse(json_string);
 		}
     }
-		
-
-	$(document).ready(function() {
+	
+    	$(document).ready(function() {
 		load_data();
 	});
-
+    	
 	function load_data() {
 		var i = getUrlVars()['id'];
 		proyectos = Persister.loadObj('proyectos', "[]");
@@ -27,7 +26,13 @@
 		document.getElementById("txtFecha").value = proyectos[i].fecha;
 	}
 
-
+	function eliminar(){
+		var i = getUrlVars()['id'];
+		proyectos = Persister.loadObj('proyectos', "[]");	
+		proyectos.splice(i,1);
+		localStorage.setItem("proyectos",JSON.stringify(proyectos));
+		window.location.reload();
+	}
 
 	function limpiar(){
 		document.getElementById("txtId").value = "";
@@ -36,11 +41,10 @@
 		document.getElementById("txtFecha").value ="";
 	}
 
-
-function getUrlVars() {
-var vars = {};
-var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-vars[key] = value;
-});
-return vars;
-}
+	function getUrlVars() {
+		var vars = {};
+		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		vars[key] = value;
+		});
+		return vars;
+	}

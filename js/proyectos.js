@@ -1,40 +1,64 @@
-	var aId = [],
-	    aNombre = [],
-	    aIcono = [],
-	    aFecha = [],
-	    aPersonas = [];
+	
+	
+	var proyectos = [];
 
-	if (localStorage.getItem('id_proyecto') != null) {
-		aId= JSON.parse(localStorage.getItem('id_proyecto'));
-		aNombre = JSON.parse(localStorage.getItem('nombre_proy'));
-	    aIcono = JSON.parse(localStorage.getItem('icono_proy'));
-	    aFecha = JSON.parse(localStorage.getItem('fecha_proy'));
-	    aPersonas = JSON.parse(localStorage.getItem('personas_proy'));
+	var Persister = {
+		save: function (key, value) {
+			localStorage.setItem(key, value);
+		},
+		load: function(key, default_value) {
+			return localStorage.getItem(key) || default_value;
+		},
+		saveObj: function(key, value) {
+			var json_string = JSON.stringify(value);
+			this.save(key, json_string);
+		},
+		loadObj: function(key, default_value) {
+			var json_string = this.load(key, default_value);
+			return JSON.parse(json_string);
+		}
+	};
+
+	function load_data() {
+		proyectos = Persister.loadObj('proyectos', "[]");
+		$('#tblProyectos').html('');
+		$('#tblProyectos').append("<th>Id</th>",
+                        "<th>Nombre</th>",
+                        "<th>Icono</th>",
+                        "<th>Fecha de Inicio</th>",
+                        "<th>Modificar</th>",
+                        "<th>Eliminar</th>");
+		
+		for (var i = 0; i < proyectos.length; i++) {
+			var modif =  '<a href = modificarp.html?id='+ i + ">Modificar"
+			var elim = '<a href = eliminarp.html?id='+ i + ">Eliminar"
+			$('#tblProyectos').append("<tr><td>"+proyectos[i].id
+			+"</td><td>"+proyectos[i].nombre+"</td><td>"+
+			proyectos[i].icono+"</td><td>"+proyectos[i].fecha  
+			+"</td><td>"+ modif +"</td><td>"+ elim +"</td></tr>");
+		}
 	}
 
-	var elementoBotonRegistrar = document.querySelector('#btnRegistrar');
-	elementoBotonRegistrar.addEventListener ('click' , registrarProyecto);
+	$(document).ready(function() {
+	load_data();
 
-	function registrarProyecto() {
-		var sId = document.querySelector('#txtId').value,
-		sNombre = document.querySelector('#txtNombre').value,
-		sIcono = document.querySelector('#txtIcono').value,
-		sFecha = document.querySelector('#txtFecha').value,
-		sPersomas = document.querySelector('#txtPersonas').value;
-		
-		aId.push(sId);
-		aNombre.push(sNombre);
-		aIcono.push(sIcono);
-		aFecha.push(sFecha);
-		aPersonas.push(sPersomas);
-
-		localStorage.setItem ('id_proyecto', JSON.stringify(aId));
-		localStorage.setItem ('nombre_proy', JSON.stringify(aNombre));
-		localStorage.setItem ('icono_proy', JSON.stringify(aIcono));
-		localStorage.setItem ('fecha_proy', JSON.stringify(aFecha));
-		localStorage.setItem ('personas_proy', JSON.stringify(aPersonas));
-
-
+	$('#Registrar').click(function(event) {
+		var id2 = $('#txtId').val(),
+	    nombre2 = $('#txtNombre').val(),
+		icono2 = $('#txtIcono').val(),
+		fecha2 = $('#txtFecha').val();
+		proyectos.push({id : id2,nombre : nombre2,icono: icono2,fecha: fecha2});
+		Persister.saveObj('proyectos', proyectos);
+		$('#proyectos').append('<tr>' + id2 + '</tr>');
+		$('#proyectos').append('<tr>' + nombre2 + '</tr>');
+		$('#proyectos').append('<tr>' + icono2 + '</tr>');
+		$('#proyectos').append('<tr>' + fecha2 + '</tr>');
+	});
+	$('#clear').click(function(event) {
+		localStorage.clear();
+		load_data();
+	});
+});
 
 	function valida(e){
 	    tecla = (document.all) ? e.keyCode : e.which;
@@ -48,4 +72,4 @@
 	    return patron.test(tecla_final);
 	}
 
- }
+ 
