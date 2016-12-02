@@ -86,79 +86,104 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h3 class="section-heading">Proyectos</h3>
+                    <h3 class="section-heading">Proyecto:</h3>
                 </div>
             </div>
             <div class="row text-center">
-                <h2>Mantenimiento de Proyectos</h2>
+                <h2 id="nombreProy">Aqui va Nombre de Proyecto</h2>
             </div>
+            <div clas = "row">
+                <div clas = "col-lg-12">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" id="imgproy">
+                            </div>
+                        </li>
+                    </ul>
+            <div class="container"></div>
+            <div id="exTab1" class="container"> 
+            <ul  class="nav nav-pills">
+                <li class="active">
+                <a  href="#1a" data-toggle="tab">Estado de Tareas</a>
+                </li>
+                <li><a href="#2a" data-toggle="tab">Agregar Tarea</a>
+                </li>
+            </ul>
+            <div class="tab-content clearfix">
+                <div class="tab-pane active" id="1a">
+                  <table id="tblEstadoProyectos" class="table table-striped">
+                    <thead>
+                      <tr>
+                        <br>
+                        <th>Estado</th>
+                        <th>Estado</th>
+                        <th>Estado</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tblEstadoProyectos">
+                        
+                    </tbody>
+                  </table>
+                </div>
+            <div class="tab-pane" id="2a">
+                    <div class="container">
 
     <form class="well form-horizontal" action=" " method=""  id="contact_form">
-    <fieldset disabled>
+    <fieldset>
 
         <!-- Form Name --> 
-        <legend>Formulario de Eliminación de Proyecto</legend>
+        <legend>Formulario de Nueva Tarea</legend>
         <!-- Text input-->
+           <!-- Text input-->
 
         <div class="form-group">
-          <label class="col-md-4 control-label">ID Proyecto</label>  
+          <label class="col-md-4 control-label" >Descripción</label> 
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt
+                 "></i></span>
+                 <input type="text" id="txtDescp" placeholder="Descripción Tarea" class="form-control"  >
+            </div>
+          </div>
+        </div>
+
+          <!-- Combobox-->
+
+          <label class="col-md-4 control-label">Encargado(a):</label>  
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-          <input type="text" id="txtId" placeholder="ID del Proyecto" class="form-control" onkeypress="return valida(event)"> 
+          <label class="col-md-4 control-label"></label>
+          <div>
+            <select class="form-control" id="encargado" placeholder="Persona a Cargo" >
+                
+            </select>
           </div>
           </div>
-        </div>
-        <!-- Text input-->
+          </div>
+         
 
-        <div class="form-group">
-          <label class="col-md-4 control-label" >Nombre Proyecto</label> 
-           <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                 <input type="text" id="txtNombre" placeholder="Nombre" class="form-control"  >
-            </div>
-          </div>
-        </div>
-
-        <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label">Icono</label>  
-               <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
-                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                 <input type="text" id="txtIcono" placeholder="Buscar Imagen" class="form-control"  >
-            </div>
-                </div>
-            </div>
-        <!-- Text input-->
-               
-        <div class="form-group">
-          <label class="col-md-4 control-label">Fecha de Inicio</label>  
-            <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                <input type="text" id="txtFecha" placeholder="Fecha" class="form-control" >
-            </div>
-          </div>
-        </div>
-        </fieldset>
        <!-- Button -->
         <div class="form-group">
             <label class="col-md-4 control-label"></label>
             <div class="col-md-4">
-                <button id="btnElimina" class="btn btn-warning" >Eliminar <span class="glyphicon glyphicon-trash"></span></button>
+                <button id="GuardarTarea" 
+                    class="btn btn-warning" >Guardar <span class="glyphicon glyphicon-floppy-disk"> 
+                    </span>
+                </button>
             </div>
         </div>
 
-    
+</fieldset>
 </form>
 </div>
     </div><!-- /.container -->
 
     <!-- jQuery -->
-    <script src="./js/jquery-2.2.4.min.js"></script>
-    <script src="./js/Proyectos/eliminarp.js"></script>
+
+    <script src="./js/jquery-2.2.4.min.js"></script>  
+    <script src="./js/headerEstados.js"></script> 
     <script src="./bootstrap/js/formulario.js"></script>
     <script src="./bootstrap/vendor/jquery/jquery.min.js"></script>
     

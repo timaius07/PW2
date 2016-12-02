@@ -98,8 +98,9 @@
                     <a  href="#1a" data-toggle="tab">Registro de Personas</a>
                 </li>
                 <li>
-                    <a href="#2a" data-toggle="tab">Agregar Personas</a>
+                    <a href="#2a" data-toggle="tab">Agregar</a>
                 </li>
+
             </ul>
             <div class="tab-content clearfix">
                 <div class="tab-pane active" id="1a">
@@ -111,13 +112,13 @@
                         <th>Avatar</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tblPersonas">
                         
                     </tbody>
                   </table>
                 </div>
             <div class="tab-pane" id="2a">
-                    <div class="container">
+                <div class="container">
 
     <form class="well form-horizontal" action=" " method=""  id="contact_form">
     <fieldset>
@@ -151,10 +152,10 @@
           <div class="form-group">
             <label class="col-md-4 control-label">Avatar </label>  
                 <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-camera"></i></span>
-                        <input multiple type="file" id=txtAvatar placeholder="Seleccione un Icono" class="file file-loading" data-allowed-file-extensions='["jpg", "png"]'>
-                    </div>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text" id="txtAvatar" placeholder="Avatar" class="form-control"  >
+            </div>
                 </div>
             </div>
 
@@ -162,7 +163,8 @@
         <div class="form-group">
             <label class="col-md-4 control-label"></label>
         <div class="col-md-4">
-            <button id="btnRegistrarPers" class="btn btn-warning" >Guardar <span class="glyphicon glyphicon-send"></span></button>
+            <button id="btnRegistrarPers" class="btn btn-warning" >Guardar <span class="glyphicon glyphicon-floppy-disk"></span></button>
+            
         </div>
 </div>
 
@@ -172,9 +174,8 @@
     </div><!-- /.container -->
 
     <!-- jQuery -->
-    <script src="./js/personas.js"></script>  
-    <script src="./js/mostrarpersonas.js"></script>
     <script src="./js/jquery-2.2.4.min.js"></script>
+    <script src="./js/Personas/personas.js"></script>
     <script src="./bootstrap/js/formulario.js"></script>
     <script src="./bootstrap/vendor/jquery/jquery.min.js"></script>
     

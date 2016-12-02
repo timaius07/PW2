@@ -94,7 +94,7 @@
             </div>
 
     <form class="well form-horizontal" action=" " method=""  id="contact_form">
-    <fieldset>
+    <fieldset >
 
         <!-- Form Name --> 
         <legend>Formulario de Modificar Proyecto</legend>
@@ -126,7 +126,7 @@
             <label class="col-md-4 control-label">Icono</label>  
                <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
-                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-camera"></i></span>
                  <input type="text" id="txtIcono" placeholder="Buscar Imagen" class="form-control"  >
             </div>
                 </div>
@@ -138,7 +138,7 @@
             <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                <input type="text" id="txtFecha" placeholder="Fecha" class="form-control" >
+                <input type="text" id="txtFecha"  placeholder="Fecha" class="form-control" >
             </div>
           </div>
         </div>
@@ -147,7 +147,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label"></label>
             <div class="col-md-4">
-                <button id="btnModificar" class="btn btn-warning" >Modificar <span class="glyphicon glyphicon-send"></span></button>
+                <button id="btnModifica" onclick="savemensajeToLocalStorage( $('input#txtId').val(), $('input#txtNombre').val(), $('input#txtIcono').val(), $('input#txtFecha').val()) ;" class="btn btn-warning" >Modificar <span class="glyphicon glyphicon-refresh"></span></button>
             </div>
         </div>
 
@@ -158,7 +158,7 @@
 
     <!-- jQuery -->
     <script src="./js/jquery-2.2.4.min.js"></script>
-    <script src="./js/modificarproyecto.js"></script>
+    <script src="./js/Proyectos/modificarproyecto.js"></script>
     <script src="./bootstrap/js/formulario.js"></script>
     <script src="./bootstrap/vendor/jquery/jquery.min.js"></script>
     

@@ -86,18 +86,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h3 class="section-heading">Proyectos</h3>
+                    <h3 class="section-heading">Personas</h3>
                 </div>
             </div>
             <div class="row text-center">
-                <h2>Mantenimiento de Proyectos</h2>
+                <h2>Mantenimiento de Personas</h2>
             </div>
 
     <form class="well form-horizontal" action=" " method=""  id="contact_form">
-    <fieldset disabled>
+    <fieldset >
 
         <!-- Form Name --> 
-        <legend>Formulario de Eliminación de Proyecto</legend>
+        <legend>Formulario de Modificar Persona</legend>
         <!-- Text input-->
 
         <div class="form-group">
@@ -105,7 +105,7 @@
           <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-          <input type="text" id="txtId" placeholder="ID del Proyecto" class="form-control" onkeypress="return valida(event)"> 
+          <input type="text" id="txtId" placeholder="ID Persona" class="form-control" onkeypress="return valida(event)"> 
           </div>
           </div>
         </div>
@@ -126,39 +126,28 @@
             <label class="col-md-4 control-label">Icono</label>  
                <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
-                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                 <input type="text" id="txtIcono" placeholder="Buscar Imagen" class="form-control"  >
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                 <input type="text" id="txtAvatar" placeholder="Buscar Imagen" class="form-control"  >
             </div>
                 </div>
             </div>
-        <!-- Text input-->
-               
-        <div class="form-group">
-          <label class="col-md-4 control-label">Fecha de Inicio</label>  
-            <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                <input type="text" id="txtFecha" placeholder="Fecha" class="form-control" >
-            </div>
-          </div>
-        </div>
-        </fieldset>
+
        <!-- Button -->
         <div class="form-group">
             <label class="col-md-4 control-label"></label>
             <div class="col-md-4">
-                <button id="btnElimina" class="btn btn-warning" >Eliminar <span class="glyphicon glyphicon-trash"></span></button>
+                <button id="btnModifica" class="btn btn-warning" >Modificar <span class="glyphicon glyphicon-refresh"></span></button>
             </div>
         </div>
 
-    
+    </fieldset>
 </form>
 </div>
     </div><!-- /.container -->
 
     <!-- jQuery -->
     <script src="./js/jquery-2.2.4.min.js"></script>
-    <script src="./js/Proyectos/eliminarp.js"></script>
+    <script src="./js/Personas/modificarpers.js"></script>
     <script src="./bootstrap/js/formulario.js"></script>
     <script src="./bootstrap/vendor/jquery/jquery.min.js"></script>
     
