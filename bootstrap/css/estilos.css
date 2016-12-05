@@ -1,35 +1,23 @@
-/*
 
-Darko Bunic
-http://www.redips.net/
-Oct, 2010.
-
-*/
-
-body {
-	font-family: arial;
-	margin: 0px; /* for IE6 / IE7 */
-}
 
 /* make drag container visible */
-#drag1,
-#drag2 {
-	border: 2px dashed LightBlue;
+#drag1 {
+	border: 2px dashed yellow;
 	display: table;
+	width: 95%;
 }
 
 
 /* table */
-div#drag1 table,
-div#drag2 table {
+div#drag1 table {
 	background-color: #eee;
 	border-collapse: collapse;
 	margin: 7px;
+	width: 98%
 }
 
 /* table cells */
-div#drag1 td,
-div#drag2 td {
+div#drag1 td{
 	border: 1px solid navy;
 	height: 50px;
 	text-align: center;

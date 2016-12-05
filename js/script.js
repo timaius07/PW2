@@ -11,7 +11,10 @@ var redipsInit;
 redipsInit = function () {
 	var rd = REDIPS.drag;	// reference to the REDIPS.drag class
 	// DIV container initialization
+	rd.style.borderDisabled = 'solid';	// border style for disabled element will not be changed (default is dotted)
+	rd.style.opacityDisabled = 60;	
 	rd.init('drag1');
+	
 	// elements could be cloned with pressed SHIFT key (for demo)
 	rd.clone_shiftKey = true;
 };
