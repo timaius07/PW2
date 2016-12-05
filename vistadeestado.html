@@ -30,7 +30,7 @@
     <link href="./bootstrap/css/agency.min.css" rel="stylesheet">
     <!-- Modal agregar proyectos -->
     <link rel="stylesheet" type="text/css" href="./bootstrap/css/ventanamodalproyectos.css">
-
+    <link href="./bootstrap/css/estilos.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -91,6 +91,8 @@
             </div>
             <div class="row text-center">
                 <h2 id="nombreProy">Aqui va Nombre de Proyecto</h2>
+                <br>
+                <h3 id= "numProy"> Aqui va numProyecto</h3>
             </div>
             <div clas = "row">
                 <div clas = "col-lg-12">
@@ -110,21 +112,23 @@
                 <li><a href="#2a" data-toggle="tab">Agregar Tarea</a>
                 </li>
             </ul>
+           
             <div class="tab-content clearfix">
-                <div class="tab-pane active" id="1a">
-                  <table id="tblEstadoProyectos" class="table table-striped">
-                    <thead>
-                      <tr>
-                        <br>
-                        <th>Estado</th>
-                        <th>Estado</th>
-                        <th>Estado</th>
-                      </tr>
-                    </thead>
-                    <tbody id="tblEstadoProyectos">
+                <div class="tab-pane active" id="1a">        
+                 <div id="drag1">
+                 <table class="table table-striped">
+                    <colgroup>
+                        <col width="100"/>
+                        <col width="100"/>
+                        <col width="100"/>
+                        <col width="100"/>
+                    </colgroup>
+                    <tbody id="tblEstadoProyectos" >
                         
                     </tbody>
-                  </table>
+
+                 </table>
+                </div>
                 </div>
             <div class="tab-pane" id="2a">
                     <div class="container">
@@ -135,7 +139,6 @@
         <!-- Form Name --> 
         <legend>Formulario de Nueva Tarea</legend>
         <!-- Text input-->
-           <!-- Text input-->
 
         <div class="form-group">
           <label class="col-md-4 control-label" >Descripción</label> 
@@ -144,6 +147,19 @@
                  <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt
                  "></i></span>
                  <input type="text" id="txtDescp" placeholder="Descripción Tarea" class="form-control"  >
+            </div>
+          </div>
+        </div>
+
+         <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >ID Proyecto</label> 
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt
+                 "></i></span>
+                 <input type="text" id="numProy" placeholder="Descripción Tarea" class="form-control"  >
             </div>
           </div>
         </div>
@@ -161,8 +177,7 @@
             </select>
           </div>
           </div>
-          </div>
-         
+          </div>         
 
        <!-- Button -->
         <div class="form-group">
@@ -183,7 +198,10 @@
     <!-- jQuery -->
 
     <script src="./js/jquery-2.2.4.min.js"></script>  
+    <script src="./js/script.js"></script> 
+    <script src="./js/redips-drag-min.js"></script>  
     <script src="./js/headerEstados.js"></script> 
+
     <script src="./bootstrap/js/formulario.js"></script>
     <script src="./bootstrap/vendor/jquery/jquery.min.js"></script>
     
