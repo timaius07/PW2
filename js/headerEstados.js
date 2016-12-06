@@ -36,15 +36,17 @@
 		estadotareas = Persister.loadObj('estadotareas', "[]");
 		tareas = Persister.loadObj('tareas', "[]");
 		$('#tblEstadoProyectos').html('');
+		//****************
 		for (var i = 0; i < estadotareas.length; i++) {
-			$('#tblEstadoProyectos').append("<th id="+estadotareas[0].orden+">"+estadotareas[i].orden+"</th>" + "," +"<br>");	
-		}
-		
+		$('#tblEstadoProyectos').append("<tr><th id="+estadotareas[i].orden+">"+estadotareas[i].orden+"</th></tr>" + ",");	
 		for (var a = 0; a < tareas.length; a++) {
-			//	$('#ultareas').append("<li>" + tareas[a].descripcion + "</li>");
-
-			$('#tblEstadoProyectos').append("<tr><td><div class= redips-drag>"+ tareas[i].descripcion +"</div></td></tr>");
+			if (tareas[a].descestado == estadotareas[i].orden){
+				$('#tblEstadoProyectos').append("<tr><td><div class= redips-drag>"+ tareas[a].descripcion +"</div></td></tr>");
 		}	
+		}
+	$('#tblEstadoProyectos').append("<tr><td><div class= redips-drag>"+ "" +"</div></td></tr>");	
+	}
+			
 	}
 	//cargar el orden de las tareas
 	function load_tarea() {
@@ -77,17 +79,20 @@
 		personas = Persister.loadObj('personas', "[]");
 		$('#encargado').html('');
 		for (var i = 0; i < personas.length; i++) {
-		$('#encargado').append('<option value ='+i+'>' + personas[i].nombre + '</option>');
+			$('#encargado').append('<option value ='+i+'>' + personas[i].nombre + '</option>');
 		}
+
 	}
 	
 	$(document).ready(function() {
 		$('#GuardarTarea').click(function(event) {
+			estadotareas = Persister.loadObj('estadotareas', "[]");
 			var descrip2 = $('#txtDescp').val(),
 		    encargado2 = $('#encargado').val(),
-		    idproyecto2 = $('#numProy').val();
+		    idproyecto2 = $('#numProy').val(),
+		    descestado2 = estadotareas[0].orden;
 			tareas.push({descripcion : descrip2 , pencargado : encargado2 ,
-		    idproyecto : idproyecto2 });
+		    idproyecto : idproyecto2 , descestado:descestado2 });
 			Persister.saveObj('tareas', tareas);
 			$('#tblEstadoProyectos').append('<tr>' + descrip2 + '</tr>');
 		});
