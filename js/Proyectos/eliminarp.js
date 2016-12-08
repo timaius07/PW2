@@ -35,6 +35,10 @@
 		window.location.reload();
 	});
 
+	document.getElementById("btnElimina").addEventListener("click", function(event){
+    	event.preventDefault()
+	});
+	
 	function limpiar(){
 		document.getElementById("txtId").value = "";
 		document.getElementById("txtNombre").value= "";

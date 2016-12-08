@@ -48,7 +48,10 @@
 		$('#estadotareas').append('<tr>' + orden2 + '</tr>');
 	});
 	
-
+	document.getElementById("btnModifica").addEventListener("click", function(event){
+    	event.preventDefault()
+	});
+	
 	function limpiar(){
 		document.getElementById("txtId").value = "";
 		document.getElementById("txtDescrip").value= "";

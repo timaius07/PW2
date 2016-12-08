@@ -1,0 +1,102 @@
+body{
+    font-family: Arial;
+    background-color: black;
+    margin:0;
+}
+    html, body {
+        height: 50%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+div#header {
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100%;
+    color:#CCC;
+    background:#333;
+    padding:20px;
+}
+div#footer {
+    position:fixed;
+    bottom:-1px;
+    left:0px;
+    width:100%;
+    color:#CCC;
+    background:#333;
+    padding:-15px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+div#footer img {
+    width:100px;
+    height:32px;
+}
+
+nav {
+    width: 100%;
+    margin: 0 auto;
+}
+nav ul {
+    list-style: none;
+    text-align: center;
+}
+nav > ul > li {
+    float: left;
+}
+nav a {
+    background: #292a2c;
+    min-width: 180px;
+    padding: 10px 0;
+    margin: 2px;
+    color: #fff;
+    box-shadow: 0 1px 3px hsla(0,0%,0%,0.5);
+    display: block;
+    border-radius: 7px;
+}
+nav a:hover {
+    background-color: tomato;
+}
+
+nav li {
+    flex-grow: 1;
+}
+nav li ul {
+    font-size: 11px;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    min-width: 100px;
+    z-index: -1;
+    transform: translateY(-50px);
+    transition: all 0.3s ease-out;
+}
+nav li:hover > ul {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px);
+    transition: all 0.3s ease-out;
+}
+nav li ul li {
+    position: relative;
+    right: 40px;
+    top: 10px;
+}
+nav li ul li ul {
+                right:-222px;
+                top:-12px;
+            }
+h2{
+    color: #fff;
+    text-align: center;
+}
+.containerheader {
+    clear: both;
+    float: left;
+    overflow: hidden;
+    width: 95%;
+}

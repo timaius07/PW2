@@ -41,6 +41,10 @@
 		"icono" : $('#txtIcono').val(),
 		"fecha" : $('#txtFecha').val(),
 	};
+
+	document.getElementById("btnModifica").addEventListener("click", function(event){
+    	event.preventDefault()
+	});
 	var i = getUrlVars()['id'];
 	
 	

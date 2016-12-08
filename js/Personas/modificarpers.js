@@ -39,13 +39,13 @@ var personas = [];
 		"avatar" : $('#txtAvatar').val(),
 	};
 	var i = getUrlVars()['id'];
-	
-	
 		personas.splice(i,1);
 		personas.push(mns);
 		Persister.saveObj('personas', personas);
 	});
-	
+	document.getElementById("btnModifica").addEventListener("click", function(event){
+    	event.preventDefault()
+	});
 
 	function limpiar(){
 		document.getElementById("txtId").value = "";

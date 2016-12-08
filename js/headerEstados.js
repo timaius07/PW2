@@ -37,17 +37,19 @@
 		tareas = Persister.loadObj('tareas', "[]");
 		$('#tblEstadoProyectos').html('');
 		//****************
-		for (var i = 0; i < estadotareas.length; i++) {
-		$('#tblEstadoProyectos').append("<tr><th id="+estadotareas[i].orden+">"+estadotareas[i].orden+"</th></tr>" + ",");	
-		for (var a = 0; a < tareas.length; a++) {
-			if (tareas[a].descestado == estadotareas[i].orden){
-				$('#tblEstadoProyectos').append("<tr><td><div class= redips-drag>"+ tareas[a].descripcion +"</div></td></tr>");
-		}	
+			for (var i = 0; i < estadotareas.length; i++) {
+				$('#tblEstadoProyectos').append("<tr><th id="+estadotareas[i].orden+">"+estadotareas[i].orden+"</th></tr>");	
+		
+			for (var a = 0; a < tareas.length; a++) {
+				if (tareas[a].descestado == estadotareas[i].orden){
+					$('#tblEstadoProyectos').append("<td><div class= redips-drag>"+ tareas[a].descripcion +"</div></td>");
+				}else{
+					$('#tblEstadoProyectos').append("<td><div class= redips-drag></td>");
+				}				
+			}
 		}
-	$('#tblEstadoProyectos').append("<tr><td><div class= redips-drag>"+ "" +"</div></td></tr>");	
 	}
 			
-	}
 	//cargar el orden de las tareas
 	function load_tarea() {
 		tareas = Persister.loadObj('tareas', "[]");
@@ -61,7 +63,7 @@
 	function load_proyecto() {
 		tareas = Persister.loadObj('tareas', "[]");
 		if (idt==null || idt == ""){
-			idt = tareas[tareas.length-1].idproyecto;
+			
 		}	
 		$('#nombreProy').html('');
 		$('#imgproy').html('');
@@ -81,26 +83,30 @@
 		for (var i = 0; i < personas.length; i++) {
 			$('#encargado').append('<option value ='+i+'>' + personas[i].nombre + '</option>');
 		}
-
 	}
 	
 	$(document).ready(function() {
 		$('#GuardarTarea').click(function(event) {
 			estadotareas = Persister.loadObj('estadotareas', "[]");
+			personas = Persister.loadObj('personas', "[]");
 			var descrip2 = $('#txtDescp').val(),
 		    encargado2 = $('#encargado').val(),
 		    idproyecto2 = $('#numProy').val(),
 		    descestado2 = estadotareas[0].orden;
-			tareas.push({descripcion : descrip2 , pencargado : encargado2 ,
+		    var encargadofin = personas[encargado2].id;
+			tareas.push({descripcion : descrip2 , pencargado : encargadofin ,
 		    idproyecto : idproyecto2 , descestado:descestado2 });
 			Persister.saveObj('tareas', tareas);
 			$('#tblEstadoProyectos').append('<tr>' + descrip2 + '</tr>');
+
 		});
 	});
 
-	function GetAnterior(){
-		history.go(-1);
-	}
+
+	document.getElementById("GuardarTarea").addEventListener("click", function(event){
+    	event.preventDefault()
+	});
+	
 	function getUrlVars() {
 		var vars = {};
 		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {

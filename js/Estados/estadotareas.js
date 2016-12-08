@@ -50,9 +50,8 @@
 		$('#estadotareas').append('<tr>' + descripcion2 + '</tr>');
 		$('#estadotareas').append('<tr>' + orden2 + '</tr>');
 	});
-	$('#clear').click(function(event) {
-		localStorage.clear();
-		load_data();
+	document.getElementById("btnRegistrarOrd").addEventListener("click", function(event){
+    	event.preventDefault()
 	});
 });
 

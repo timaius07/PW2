@@ -52,9 +52,8 @@
 		$('#personas').append('<tr>' + avatar2 + '</tr>');	
 	});
 
-	$('#clear').click(function(event) {
-		localStorage.clear();
-		load_data();
+	document.getElementById("btnRegistrarPers").addEventListener("click", function(event){
+    	event.preventDefault()
 	});
 });
 	
