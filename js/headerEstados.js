@@ -4,7 +4,7 @@
 	var personas = []; //carga las personas encargadas de las tareas
 	var idt = getUrlVars()['id'];
 	var nuevop = false;
-
+	var numP =	0;
 
 	var Persister = {
 		save: function (key, value) {
@@ -24,9 +24,10 @@
 	};
 
 	$(document).ready(function() {
+			load_proyecto();
 			load_data();
 			load_personas();
-			load_proyecto();
+			
 			//load_tarea();
 		
 			
@@ -35,12 +36,18 @@
 	function load_data() {
 		estadotareas = Persister.loadObj('estadotareas', "[]");
 		tareas = Persister.loadObj('tareas', "[]");
+		
 		$('#tblEstadoProyectos').html('');
 		//****************
-			for (var i = 0; i < estadotareas.length; i++) {
+	
+	for (var h = 0; h < tareas.length; h++) {
+	if (tareas[h].idproyecto == numP){
+		for (var i = 0; i < estadotareas.length; i++) {
 				$('#tblEstadoProyectos').append("<tr><th id="+estadotareas[i].orden+">"+estadotareas[i].orden+"</th></tr>");	
 		
 			for (var a = 0; a < tareas.length; a++) {
+			if (tareas[a].idproyecto == numP){
+
 				if (tareas[a].descestado == estadotareas[i].orden){
 					$('#tblEstadoProyectos').append("<td><div class= redips-drag>"+ tareas[a].descripcion +"</div></td>");
 				}else{
@@ -49,7 +56,9 @@
 			}
 		}
 	}
-			
+	}
+	}
+}			
 	//cargar el orden de las tareas
 	function load_tarea() {
 		tareas = Persister.loadObj('tareas', "[]");
@@ -71,7 +80,8 @@
 		proyectos = Persister.loadObj('proyectos', "[]");
 		//document.getElementById('imgproy').src = proyectos[idt].icono ;
 		$("#nombreProy").html(proyectos[idt].nombre);
-		$("#numProy").html(idt).id;
+		$("#numProy").html(proyectos[idt].id);
+		numP = proyectos[idt].id;
 		document.getElementById('numProy').value = proyectos[idt].id; 
 		
 	}

@@ -50,9 +50,7 @@
 		$('#estadotareas').append('<tr>' + descripcion2 + '</tr>');
 		$('#estadotareas').append('<tr>' + orden2 + '</tr>');
 	});
-	document.getElementById("btnRegistrarOrd").addEventListener("click", function(event){
-    	event.preventDefault()
-	});
+	
 });
 
 	function valida(e){
