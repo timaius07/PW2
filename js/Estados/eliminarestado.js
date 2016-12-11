@@ -31,11 +31,11 @@
 		estadotareas = Persister.loadObj('estadotareas', "[]");	
 		estadotareas.splice(i,1);
 		localStorage.setItem("estadotareas",JSON.stringify(estadotareas));
-		window.location.reload();
 	});
 
 	document.getElementById("btnElimina").addEventListener("click", function(event){
-    	event.preventDefault()
+    	event.preventDefault();
+    	window.location.href="indexest.html";
 	});
 	
 	function limpiar(){

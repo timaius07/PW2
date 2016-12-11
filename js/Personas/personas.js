@@ -51,10 +51,6 @@
 		$('#personas').append('<tr>' + nombre2 + '</tr>');
 		$('#personas').append('<tr>' + avatar2 + '</tr>');	
 	});
-
-	document.getElementById("btnRegistrarPers").addEventListener("click", function(event){
-    	event.preventDefault()
-	});
 });
 	
 	function valida(e){

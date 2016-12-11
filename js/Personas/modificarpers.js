@@ -44,7 +44,8 @@ var personas = [];
 		Persister.saveObj('personas', personas);
 	});
 	document.getElementById("btnModifica").addEventListener("click", function(event){
-    	event.preventDefault()
+    	event.preventDefault();
+    	window.location.href="indexpers.html";
 	});
 
 	function limpiar(){
@@ -54,10 +55,10 @@ var personas = [];
 	}
 
 
-function getUrlVars() {
-var vars = {};
-var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-vars[key] = value;
-});
-return vars;
-}
+	function getUrlVars() {
+		var vars = {};
+		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		vars[key] = value;
+		});
+		return vars;
+	}

@@ -31,11 +31,12 @@
 		personas = Persister.loadObj('personas', "[]");	
 		personas.splice(i,1);
 		localStorage.setItem("personas",JSON.stringify(personas));
-		window.location.reload();
+		
 	});
 
 	document.getElementById("btnElimina").addEventListener("click", function(event){
-    	event.preventDefault()
+    	event.preventDefault();
+    	window.location.href="indexpers.html";
 	});
 	function limpiar(){
 		document.getElementById("txtId").value = "";

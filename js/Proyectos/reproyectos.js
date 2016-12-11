@@ -61,11 +61,11 @@
 					}	
 					if (tar ==false){
 						for (var y = 0; y < estadotareas.length; y++) {		
-						if (tareas[i].descestado == estadotareas[y].orden){
-							estado = estadotareas[y].orden;
-							tar=true
-						}			
-					}	
+							if (tareas[i].descestado == estadotareas[y].orden){
+								estado = estadotareas[y].orden;
+								tar=true
+							}			
+						}	
 					}	
 				if (pro==true & tar ==true){
 					$('#tblrPersonas').append("<tr><td>"+tareas[i].descripcion+

@@ -33,32 +33,51 @@
 			
 	});
 	//carga el orden de las tareas en un table
+	//carga el orden de las tareas en un table
 	function load_data() {
 		estadotareas = Persister.loadObj('estadotareas', "[]");
 		tareas = Persister.loadObj('tareas', "[]");
-		
 		$('#tblEstadoProyectos').html('');
 		//****************
-	
-	for (var h = 0; h < tareas.length; h++) {
-	if (tareas[h].idproyecto == numP){
 		for (var i = 0; i < estadotareas.length; i++) {
-				$('#tblEstadoProyectos').append("<tr><th id="+estadotareas[i].orden+">"+estadotareas[i].orden+"</th></tr>");	
-		
+		$('#tblEstadoProyectos').append("<tr><th id="+estadotareas[i].orden+">"+estadotareas[i].orden+"</th></tr>");
 			for (var a = 0; a < tareas.length; a++) {
-			if (tareas[a].idproyecto == numP){
+				if (tareas[a].descestado == estadotareas[i].orden & tareas[a].idproyecto == numP){
 
-				if (tareas[a].descestado == estadotareas[i].orden){
-					$('#tblEstadoProyectos').append("<td><div class= redips-drag>"+ tareas[a].descripcion +"</div></td>");
+					$('#tblEstadoProyectos').append("<td><div id= divd1>"+ tareas[a].descripcion +"</div></td>");
 				}else{
-					$('#tblEstadoProyectos').append("<td><div class= redips-drag></td>");
-				}				
+					$('#tblEstadoProyectos').append("<td><div id= divd1></div></td>");
+				}
+			
+								
 			}
-		}
+		}		
 	}
-	}
-	}
-}			
+
+	window.onload = function () {
+
+	$('#tblEstadoProyectos').find('td').click( function(){
+		kd= ($(this).index()+1);
+		var dd=(kd-1);
+		
+		tareas = Persister.loadObj('tareas', "[]");
+		var mns = {
+		"descripcion" : $('#DescpModif').val(),
+		 "pencargado" : tareas[dd].pencargado,
+		  "idproyecto" : tareas[dd].idproyecto,
+		   "descestado": tareas[dd].descestado};
+
+		var i = getUrlVars()['id'];
+		tareas.splice(i,1);
+		tareas.push(mns);
+		Persister.saveObj('tareas', tareas);
+
+
+		$('#myModal').modal('show');
+		document.getElementById("destino").value = datePerson[dd].destino;
+		
+	});
+	}			
 	//cargar el orden de las tareas
 	function load_tarea() {
 		tareas = Persister.loadObj('tareas', "[]");
@@ -77,22 +96,22 @@
 		$('#nombreProy').html('');
 		$('#imgproy').html('');
 		$('#numProy').html('');
-		proyectos = Persister.loadObj('proyectos', "[]");
-		//document.getElementById('imgproy').src = proyectos[idt].icono ;
-		$("#nombreProy").html(proyectos[idt].nombre);
-		$("#numProy").html(proyectos[idt].id);
-		numP = proyectos[idt].id;
-		document.getElementById('numProy').value = proyectos[idt].id; 
-		
+			proyectos = Persister.loadObj('proyectos', "[]");
+			//document.getElementById('imgproy').src = proyectos[idt].icono ;
+			$("#nombreProy").html(proyectos[idt].nombre);
+			$("#numProy").html(proyectos[idt].id);
+			numP = proyectos[idt].id;
+			document.getElementById('numProy').value = proyectos[idt].id; 
+			
 	}
 
 	//carga el nombre del encargado a realizar las tareas
 	function load_personas() {
 		personas = Persister.loadObj('personas', "[]");
 		$('#encargado').html('');
-		for (var i = 0; i < personas.length; i++) {
-			$('#encargado').append('<option value ='+i+'>' + personas[i].nombre + '</option>');
-		}
+			for (var i = 0; i < personas.length; i++) {
+				$('#encargado').append('<option value ='+i+'>' + personas[i].nombre + '</option>');
+			}
 	}
 	
 	$(document).ready(function() {
@@ -108,15 +127,16 @@
 		    idproyecto : idproyecto2 , descestado:descestado2 });
 			Persister.saveObj('tareas', tareas);
 			$('#tblEstadoProyectos').append('<tr>' + descrip2 + '</tr>');
-
+		
 		});
 	});
 
-
 	document.getElementById("GuardarTarea").addEventListener("click", function(event){
-    	event.preventDefault()
+    	event.preventDefault();
+    	
 	});
-	
+
+
 	function getUrlVars() {
 		var vars = {};
 		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {

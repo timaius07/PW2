@@ -46,10 +46,12 @@
 		$('#estadotareas').append('<tr>' + id2 + '</tr>');
 		$('#estadotareas').append('<tr>' + descripcion2 + '</tr>');
 		$('#estadotareas').append('<tr>' + orden2 + '</tr>');
+		
 	});
 	
 	document.getElementById("btnModifica").addEventListener("click", function(event){
-    	event.preventDefault()
+    	event.preventDefault();
+    	window.location.href="indexest.html";
 	});
 	
 	function limpiar(){
@@ -59,10 +61,10 @@
 	}
 
 
-function getUrlVars() {
-var vars = {};
-var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-vars[key] = value;
-});
-return vars;
-}
+	function getUrlVars() {
+		var vars = {};
+		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		vars[key] = value;
+		});
+		return vars;
+	}

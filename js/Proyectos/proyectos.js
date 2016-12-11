@@ -57,9 +57,7 @@
 		$('#proyectos').append('<tr>' + icono2 + '</tr>');
 		$('#proyectos').append('<tr>' + fecha2 + '</tr>');
 	});
-	document.getElementById("Registrar").addEventListener("click", function(event){
-    	event.preventDefault()
-	});
+	
 });
 
 	function valida(e){

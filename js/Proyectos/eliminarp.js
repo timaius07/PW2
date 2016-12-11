@@ -36,7 +36,8 @@
 	});
 
 	document.getElementById("btnElimina").addEventListener("click", function(event){
-    	event.preventDefault()
+    	event.preventDefault();
+    	window.location.href="indexp.html";
 	});
 	
 	function limpiar(){

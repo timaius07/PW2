@@ -34,17 +34,15 @@
 	}
 
 	$('#btnModifica').click(function(event) {
-	proyectos = Persister.loadObj('proyectos', "[]");	
-	var mns = {
-		"id" : $('#txtId').val(),
-	    "nombre" : $('#txtNombre').val(),
-		"icono" : $('#txtIcono').val(),
-		"fecha" : $('#txtFecha').val(),
-	};
+		proyectos = Persister.loadObj('proyectos', "[]");	
+		var mns = {
+			"id" : $('#txtId').val(),
+		    "nombre" : $('#txtNombre').val(),
+			"icono" : $('#txtIcono').val(),
+			"fecha" : $('#txtFecha').val(),
+		};
 
-	document.getElementById("btnModifica").addEventListener("click", function(event){
-    	event.preventDefault()
-	});
+
 	var i = getUrlVars()['id'];
 	
 	
@@ -57,7 +55,10 @@
 		$('#proyectos').append('<tr>' + fecha2 + '</tr>');
 	});
 	
-
+	document.getElementById("btnModifica").addEventListener("click", function(event){
+    	event.preventDefault();
+    	window.location.href="indexp.html";
+	});
 	function limpiar(){
 		document.getElementById("txtId").value = "";
 		document.getElementById("txtNombre").value= "";
@@ -66,10 +67,10 @@
 	}
 
 
-function getUrlVars() {
-var vars = {};
-var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-vars[key] = value;
-});
-return vars;
-}
+	function getUrlVars() {
+		var vars = {};
+		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		vars[key] = value;
+		});
+	return vars;
+	}
