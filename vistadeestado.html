@@ -113,25 +113,25 @@
             <div class="tab-content clearfix">
                 <div class="tab-pane active" id="1a">        
                  <div >
-                 <table class="table table-striped" >
-                    <tbody id="tblEstadoProyectos" >
-                                                   <div class="row">
+                 <table class="table table-striped"  border="1px" >
+                    <tbody id="tblEstadoProyectos" border="1px">
+        <div class="row">
           <!-- Modal -->
           <form action="vistadeestado.html" method="post">
             <div class="modal fade" id="myModal" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" id="closemodal" class="close" data-dismiss="modal" onclick="limpiar()">&times;</button>
+                    <button type="button" id="closemodal" class="close" data-dismiss="modal">&times;</button>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt
                         "></i></span>
-                         <input type="text" id="s" placeholder="Descripción Tarea" class="form-control"  >
+                         <input type="text" id="DescpModif" placeholder="Descripción Tarea" class="form-control"  >
                         </div>
                   </div>
                   <div class="modal-footer">
-                    <input type="button" class="btn btn-default" value="Guardar" id="save-client" onclick="savemensajeToLocalStorage( $('input#destino').val(), $('input#asunto').val(), $('input#mensaje').val()) ;"/>
-                    <input type="button" class="btn btn-danger" onclick="eliminar()"  value="Eliminar"/>
+                    <button id="btnModifica-Tarea" class="btn btn-warning" >Modificar <span class="glyphicon glyphicon-refresh"></span> </button>
+                    <button id="btnEliminaTarea" class="btn btn-danger" >Eliminar <span class="glyphicon glyphicon-trash"></span></button>
                   </div>
                 </div>
               </div>
@@ -165,8 +165,6 @@
           </div>
         </div>
 
-  
-
           <!-- Combobox-->
 
           <label class="col-md-4 control-label">Encargado(a):</label>  
@@ -189,7 +187,7 @@
                 <button id="GuardarTarea" 
                     class="btn btn-warning" >Guardar <span class="glyphicon glyphicon-floppy-disk"> 
                     </span>
-                </button>
+                </button>       
             </div>
         </div>
 
@@ -203,8 +201,7 @@
     <!-- jQuery -->
 
     <script src="./js/jquery-2.2.4.min.js"></script>  
- 
-   <script src="./js/headerEstados.js"></script>
+    <script src="./js/headerEstados.js"></script>
    
    
     

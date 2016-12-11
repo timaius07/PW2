@@ -5,7 +5,7 @@
 	var idt = getUrlVars()['id'];
 	var nuevop = false;
 	var numP =	0;
-
+	var dd =0;
 	var Persister = {
 		save: function (key, value) {
 			localStorage.setItem(key, value);
@@ -43,50 +43,33 @@
 		$('#tblEstadoProyectos').append("<tr><th id="+estadotareas[i].orden+">"+estadotareas[i].orden+"</th></tr>");
 			for (var a = 0; a < tareas.length; a++) {
 				if (tareas[a].descestado == estadotareas[i].orden & tareas[a].idproyecto == numP){
-
 					$('#tblEstadoProyectos').append("<td><div id= divd1>"+ tareas[a].descripcion +"</div></td>");
-				}else{
-					$('#tblEstadoProyectos').append("<td><div id= divd1></div></td>");
-				}
-			
-								
+				}						
 			}
 		}		
 	}
 
 	window.onload = function () {
-
+	var tarselc = "";
 	$('#tblEstadoProyectos').find('td').click( function(){
-		kd= ($(this).index()+1);
-		var dd=(kd-1);
-		
-		tareas = Persister.loadObj('tareas', "[]");
-		var mns = {
-		"descripcion" : $('#DescpModif').val(),
-		 "pencargado" : tareas[dd].pencargado,
-		  "idproyecto" : tareas[dd].idproyecto,
-		   "descestado": tareas[dd].descestado};
-
-		var i = getUrlVars()['id'];
-		tareas.splice(i,1);
-		tareas.push(mns);
-		Persister.saveObj('tareas', tareas);
-
-
-		$('#myModal').modal('show');
-		document.getElementById("destino").value = datePerson[dd].destino;
-		
-	});
-	}			
-	//cargar el orden de las tareas
-	function load_tarea() {
-		tareas = Persister.loadObj('tareas', "[]");
-		$('#tblEstadoProyectos').html('');
-
-		for (var i = 0; i < tareas.length; i++) {
-			$('#tblEstadoProyectos').append("<tr><td>"+ tareas[i].descripcion + "</td></tr>");
+		kd= ($(this).index()-1);
+		if (kd == 0){
+			dd=(kd)
+		}else{
+			dd=(kd-1);	
 		}
-	}
+		tarselc = tareas[dd].descripcion;
+		tareas = Persister.loadObj('tareas', "[]");
+		numP = $('#numProy').val();
+		for (var a = 0; a < tareas.length; a++) {
+			if (tareas[a].idproyecto ==numP & tareas[a].descripcion ==tarselc){
+				$('#myModal').modal('show');
+				document.getElementById("DescpModif").value = tareas[a].descripcion;
+			}
+		 }		
+	 });
+	}			
+
 	//cargar el nombre y la imagen del proyecto
 	function load_proyecto() {
 		tareas = Persister.loadObj('tareas', "[]");
@@ -97,7 +80,7 @@
 		$('#imgproy').html('');
 		$('#numProy').html('');
 			proyectos = Persister.loadObj('proyectos', "[]");
-			//document.getElementById('imgproy').src = proyectos[idt].icono ;
+			document.getElementById('imgproy').src = proyectos[idt].icono ;
 			$("#nombreProy").html(proyectos[idt].nombre);
 			$("#numProy").html(proyectos[idt].id);
 			numP = proyectos[idt].id;
@@ -114,6 +97,8 @@
 			}
 	}
 	
+
+
 	$(document).ready(function() {
 		$('#GuardarTarea').click(function(event) {
 			estadotareas = Persister.loadObj('estadotareas', "[]");
@@ -126,16 +111,48 @@
 			tareas.push({descripcion : descrip2 , pencargado : encargadofin ,
 		    idproyecto : idproyecto2 , descestado:descestado2 });
 			Persister.saveObj('tareas', tareas);
-			$('#tblEstadoProyectos').append('<tr>' + descrip2 + '</tr>');
+			load_data();
 		
+		});
+
+		$('#btnModifica-Tarea').click(function(event) {
+			tareas = Persister.loadObj('tareas', "[]");	
+			var mns = {
+				
+			    "descripcion" : $('#DescpModif').val(),
+			    "pencargado" : tareas[dd].pencargado ,
+				"idproyecto" : tareas[dd].idproyecto ,
+				"descestado" : tareas[dd].descestado ,
+			};
+			tareas.splice(dd,1);
+			tareas.push(mns);
+			Persister.saveObj('tareas', tareas);
+			window.location.reload();
+		});
+
+		
+		$('#btnEliminaTarea').click(function(event) {	
+			tareas = Persister.loadObj('tareas', "[]");	
+			tareas.splice(dd,1);
+			localStorage.setItem("tareas",JSON.stringify(tareas));
+			window.location.reload();
+		});
+
+		$('#clear').click(function(event) {
+			localStorage.clear();
+			load_data();
 		});
 	});
 
 	document.getElementById("GuardarTarea").addEventListener("click", function(event){
     	event.preventDefault();
-    	
 	});
-
+	document.getElementById("btnModifica-Tarea").addEventListener("click", function(event){
+    	event.preventDefault();
+	});
+	document.getElementById("btnEliminaTarea").addEventListener("click", function(event){
+    	event.preventDefault();
+	});
 
 	function getUrlVars() {
 		var vars = {};
