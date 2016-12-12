@@ -43,7 +43,7 @@
 		$('#tblEstadoProyectos').append("<tr><th id="+estadotareas[i].orden+">"+estadotareas[i].orden+"</th></tr>");
 			for (var a = 0; a < tareas.length; a++) {
 				if (tareas[a].descestado == estadotareas[i].orden & tareas[a].idproyecto == numP){
-					$('#tblEstadoProyectos').append("<td><div id= divd1>"+ tareas[a].descripcion +"</div></td>");
+					$('#tblEstadoProyectos').append("<td id=nuevo><div id= divd1>"+ tareas[a].descripcion +"</div></td>");
 				}						
 			}
 		}		
@@ -52,20 +52,14 @@
 	window.onload = function () {
 	var tarselc = "";
 	$('#tblEstadoProyectos').find('td').click( function(){
-		kd= $(this).innerText;
-		if (kd == 0){
-			dd=(kd)
-		}else{
-			dd= kd-1	
-		}
-		
-		tarselc = tareas[dd].descripcion;
+		var kd = document.getElementById("nuevo").textContent;;
 		tareas = Persister.loadObj('tareas', "[]");
 		numP = $('#numProy').val();
 		for (var a = 0; a < tareas.length; a++) {
-			if (tareas[a].idproyecto ==numP & tareas[a].descripcion ==tarselc){
+			if (tareas[a].idproyecto ==numP & tareas[a].descripcion ==kd){
 				$('#myModal').modal('show');
 				document.getElementById("DescpModif").value = tareas[a].descripcion;
+				dd=a;
 			}
 		 }		
 	 });
