@@ -50,16 +50,15 @@
 	}
 
 	window.onload = function () {
-	var tarselc = "";
 	$('#tblEstadoProyectos').find('td').click( function(){
-		var kd = document.getElementById("nuevo").textContent;;
+		var kd= $(this.textContent).selector;	
 		tareas = Persister.loadObj('tareas', "[]");
 		numP = $('#numProy').val();
 		for (var a = 0; a < tareas.length; a++) {
 			if (tareas[a].idproyecto ==numP & tareas[a].descripcion ==kd){
 				$('#myModal').modal('show');
 				document.getElementById("DescpModif").value = tareas[a].descripcion;
-				dd=a;
+				dd= a
 			}
 		 }		
 	 });
