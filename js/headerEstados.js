@@ -52,12 +52,13 @@
 	window.onload = function () {
 	var tarselc = "";
 	$('#tblEstadoProyectos').find('td').click( function(){
-		kd= ($(this).index()-1);
+		kd= $(this).innerText;
 		if (kd == 0){
 			dd=(kd)
 		}else{
-			dd=(kd-1);	
+			dd= kd-1	
 		}
+		
 		tarselc = tareas[dd].descripcion;
 		tareas = Persister.loadObj('tareas', "[]");
 		numP = $('#numProy').val();
@@ -69,6 +70,10 @@
 		 }		
 	 });
 	}			
+
+
+
+
 
 	//cargar el nombre y la imagen del proyecto
 	function load_proyecto() {
