@@ -1,37 +1,37 @@
-# [Start Bootstrap](http://startbootstrap.com/) - [Agency](http://startbootstrap.com/template-overviews/agency/)
+## CRUDS
+Los usuarios deben ser capaces de crear, editar, eliminar y listar en tablas html
+las siguientes entidades:
+• Proyectos: Los atributos del objeto proyecto que serán mostrados en la
+tabla son: id, nombre, icono, fecha de inicio, número de personas asociadas
+al proyecto.
+• Personas: Atributos de las personas: id, nombre, avatar
+• Estados de tareas: Atributos de los estados de tarea son: id, descripción y
+orden.
 
-[Agency](http://startbootstrap.com/template-overviews/agency/) is a one page agency portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid with hover effects, full page portfolio item modals, a responsive timeline, and a working PHP contact form.
+## Vista de Visualizacion del Proyecto
 
-## Getting Started
 
-Several options are available to get started quickly:
-* [Download the latest release on Start Bootstrap](http://startbootstrap.com/template-overviews/agency/)
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-agency.git`
-* Fork the repo
+• Cada proyecto debe tener una vista donde el usuario puede saber el estado
+del proyecto.
+• Debe haber una columna con cada estado que haya sido configurado.
+• Debe ser posible crear una tarea dentro del proyecto.
+• Debe ser posible cambiar el estado de cada tarea si uno arrastra la tarea de
+una columna a otra.
+• Debe ser posible editar o eliminar cualquier tarea en la vista.
+• Debe ser posible des-hacer una eliminación de una tarea.
+• Debe ser posible asignar y des-asignar tareas a personas previamente
 
-## Developing Using Source Files
 
-To use the source files, you will need to have npm installed globally along with Gulp.js. To start:
-* Run `npm install` in the root directory
-* Run `gulp dev` and edit the files as needed
+## Reportes
 
-If you need to update the plugins included with this template, simply run the following tasks:
-* First run `npm update` to update the dependencies
-* Then run `gulp copy` to copy the new versions to their proper destinations
 
-## Bugs and Issues
-
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-agency/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/agency/).
-
-## Creator
-
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
-
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
-
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
-
-## Copyright and License
-
-Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-agency/blob/gh-pages/LICENSE) license.
+Deben existir al menos los siguientes reportes:
+• Reporte de tareas por persona.
+• Reporte de tareas por estado.
+• Reporte de tareas por proyecto.
+Es importante mencionar que cada reporte debe contar una tabla html que
+muestre los reportes acompañada de un gráfico circular que represente los
+números que se muestran en la tabla.
+Almacenamiento:
+• Todos los datos deben ser almacenados utilizando localStorage en el
+navegador del usuario.
